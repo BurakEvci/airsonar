@@ -1,0 +1,47 @@
+# STM32CubeIDE build output
+firmware/**/Debug/
+firmware/**/Release/
+*.elf
+*.map
+*.list
+*.bin
+*.hex
+
+# Qt / CMake
+build*/
+*.user
+CMakeLists.txt.user*
+CMakeUserPresets.json
+
+# Vivado / Vitis (only sources and Tcl scripts are tracked)
+fpga/**/*.cache/
+fpga/**/*.hw/
+fpga/**/*.runs/
+fpga/**/*.sim/
+fpga/**/*.ip_user_files/
+fpga/**/*.gen/
+fpga/**/*.srcs/
+fpga/**/*.xpr
+fpga/**/.Xil/
+*.jou
+*.log
+*.str
+*.wdb
+
+# Python
+__pycache__/
+.venv/
+.ipynb_checkpoints/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# STM32CubeIDE machine-specific files
+firmware/**/*.launch
+firmware/**/.settings/com.st.stm32cube.ide.mcu.sfrview.prefs
+
+# Python experiment outputs (curated copies live in docs/images)
+python/experiments/*/results/
