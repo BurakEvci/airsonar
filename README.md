@@ -52,7 +52,7 @@ Details: [`hardware/`](hardware/README.md)
 | [`docs/reports/`](docs/reports) | Weekly engineering reports |
 | [`docs/diagrams/`](docs/diagrams) | Architecture and signal-flow diagrams (Mermaid) |
 | [`python/`](python) | Algorithm prototypes and notebooks |
-| [`firmware/nucleo-f446re/`](firmware/nucleo-f446re) | STM32 firmware (C++17, AUTOSAR C++14 guidelines) |
+| [`firmware/nucleo-f446re/airsonar-fw/`](firmware/nucleo-f446re/airsonar-fw) | STM32 firmware (C++17, AUTOSAR C++14 guidelines) |
 | [`host/airsonar-gui/`](host/airsonar-gui) | Qt desktop application |
 | [`fpga/zedboard/`](fpga/zedboard) | Verilog sources, testbenches, constraints, Vivado Tcl scripts |
 | [`linux/`](linux) | Kernel driver and Linux configuration (Phase 4) |
@@ -64,6 +64,8 @@ See [ROADMAP.md](ROADMAP.md) for the full plan.
 
 | Milestone | Status | Demo |
 |---|---|---|
+| Week 00 — laptop sonar (Python) | 🟡 Simulation done, wall measurement pending | — |
+| Week 01 — first C++ firmware: LED, UART, AUTOSAR C++14 setup | ✅ Done | — |
 | `v0.1-live-spectrum` — real-time spectrum on Qt | ⏳ Planned | — |
 | `v0.2-data-node` — SPI, I2C, FreeRTOS data acquisition node | ⏳ Planned | — |
 | `v0.3-sonar-ranging` — chirp sonar with range, bearing, Doppler | ⏳ Planned | — |
@@ -73,7 +75,7 @@ See [ROADMAP.md](ROADMAP.md) for the full plan.
 ## Development workflow
 
 Every algorithm follows the same path: **theory → Python prototype → real-time C++ implementation → measurement**.
-Code follows [CODING_STANDARD.md](CODING_STANDARD.md).
+Code follows [CODING_STANDARD.md](CODING_STANDARD.md) ([Türkçe](CODING_STANDARD.tr.md)). Every rule applied in the firmware is recorded in the [compliance log](docs/coding-rules/compliance-log.md).
 
 ## License
 

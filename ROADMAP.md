@@ -3,11 +3,17 @@
 Pace: ~8–10 hours/week. Each week ends with a report in [`docs/reports/`](docs/reports).
 A parallel FPGA track on the ZedBoard (one evening per week) starts in week 5.
 
+## Phase 0 — Warm-up
+
+| Week | Implementation | Done |
+|---|---|---|
+| 0 | Laptop sonar in Python: chirp, matched filter, envelope, range | 🟡 wall measurement pending |
+
 ## Phase 1 — Embedded foundations (Nucleo-F446RE + Qt)
 
 | Week | Implementation | Theory | Done |
 |---|---|---|---|
-| 1 | Toolchain, C++ project, LED blink, UART output | MCU architecture, clock tree, memory map | ☐ |
+| 1 | Toolchain, C++ project, LED blink, UART output | MCU architecture, clock tree, memory map | ✅ |
 | 2 | Register-level GPIO, button interrupt, timer interrupt | NVIC, `volatile`, ISR rules | ☐ |
 | 3 | Timer-triggered ADC + DMA double buffer, jitter measurement | Sampling theorem, aliasing, DMA | ☐ |
 | 4 | Qt app: serial port, packet format, live plot, FFT | DFT/FFT, windowing, STFT, spectrogram | ☐ |
