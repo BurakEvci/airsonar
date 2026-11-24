@@ -1,0 +1,11 @@
+rx_samples,tx_samples,method,time_us,machine,notes
+2000,480,direct,101,dev-laptop,run 1
+2000,480,fft,220,dev-laptop,run 1
+2000,480,direct,113,dev-laptop,run 2
+2000,480,fft,207,dev-laptop,run 2
+2000,480,direct,107,reference-machine,sweep
+2000,480,fft,190,reference-machine,sweep
+9600,480,direct,614,reference-machine,sweep
+9600,480,fft,459,reference-machine,sweep
+48000,480,direct,2681,reference-machine,sweep
+48000,480,fft,1519,reference-machine,sweep
