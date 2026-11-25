@@ -27,7 +27,7 @@ std::size_t to_decimal(std::uint32_t value, std::array<std::uint8_t, kMaxDecimal
 
     // 2) Copy them in the correct order (most significant first).
     for (std::size_t i{0U}; i < count; ++i) {
-        // digits[i] = reversed[ ? ];
+        
     	digits[i] = reversed[count - 1U - i];
     }
     return count;
