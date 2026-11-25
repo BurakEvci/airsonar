@@ -42,6 +42,8 @@ Thumbs.db
 # STM32CubeIDE machine-specific files
 firmware/**/*.launch
 firmware/**/.settings/com.st.stm32cube.ide.mcu.sfrview.prefs
+firmware/**/.settings/language.settings.xml
+firmware/**/.settings/stm32cubeide.project.prefs
 
 # Python experiment outputs (curated copies live in docs/images)
 python/experiments/*/results/
