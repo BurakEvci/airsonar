@@ -13,16 +13,6 @@
 
 namespace {
 
-template <std::size_t N>
-constexpr std::array<std::uint8_t, N - 1U> to_bytes(char const (&text)[N]) noexcept
-{
-	static_assert(N > 1U, "Text must not be empty");
-	std::array<std::uint8_t, N - 1U> bytes{};
-	for (std::size_t i{0U}; i < (N - 1U); ++i) {
-		bytes[i] = static_cast<std::uint8_t>(text[i]);
-	}
-	return bytes;
-}
 
 class Uart final {
 public:
@@ -69,9 +59,9 @@ std::uint32_t next_count(std::uint32_t const count) noexcept
 extern "C" void app_main() noexcept
 {
 	constexpr std::uint32_t kLedToggleIntervalMs{500U};
-    constexpr auto kBootMessage{to_bytes("airsonar: boot\r\n")};
-    constexpr auto kTickPrefix{to_bytes("tick ")};
-    constexpr auto kLineEnd{to_bytes("\r\n")};
+    constexpr auto kBootMessage{airsonar::lib::to_bytes("airsonar: boot\r\n")};
+    constexpr auto kTickPrefix{airsonar::lib::to_bytes("tick ")};
+    constexpr auto kLineEnd{airsonar::lib::to_bytes("\r\n")};
 
     airsonar::drivers::Led led{LD2_GPIO_Port, LD2_Pin};
     Uart uart{huart2};
