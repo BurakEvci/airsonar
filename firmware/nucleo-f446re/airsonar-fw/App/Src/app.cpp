@@ -1,24 +1,17 @@
 #include  "app.hpp"
+#include "led.hpp"
+#include "text_format.hpp"
 #include "main.h"
 #include "usart.h"
+
+
 #include <array>
 #include <cstddef>
 #include <cstdint>
 #include <limits>
-#include "text_format.hpp"
+
 
 namespace {
-
-class Led final {
-public:
-	Led(GPIO_TypeDef* const port, std::uint16_t const pin) noexcept : port_{port}, pin_{pin} {}
-	void toggle() noexcept { HAL_GPIO_TogglePin(port_, pin_); }
-
-private:
-	GPIO_TypeDef* const port_;
-	std::uint16_t const pin_;
-
-};
 
 template <std::size_t N>
 constexpr std::array<std::uint8_t, N - 1U> to_bytes(char const (&text)[N]) noexcept
@@ -80,7 +73,7 @@ extern "C" void app_main() noexcept
     constexpr auto kTickPrefix{to_bytes("tick ")};
     constexpr auto kLineEnd{to_bytes("\r\n")};
 
-	Led led{LD2_GPIO_Port, LD2_Pin};
+    airsonar::drivers::Led led{LD2_GPIO_Port, LD2_Pin};
     Uart uart{huart2};
     std::uint32_t tick_count{0U};
     std::array<std::uint8_t, airsonar::lib::kMaxDecimalDigits> digits{};
