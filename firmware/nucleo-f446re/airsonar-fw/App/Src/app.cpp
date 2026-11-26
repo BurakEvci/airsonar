@@ -3,6 +3,7 @@
 #include "text_format.hpp"
 #include "main.h"
 #include "usart.h"
+#include "uart.hpp"
 
 
 #include <array>
@@ -12,38 +13,6 @@
 
 
 namespace {
-
-
-class Uart final {
-public:
-    explicit Uart(UART_HandleTypeDef& handle) noexcept : handle_{handle} {}
-
-    template <std::size_t N>
-    bool write(std::array<std::uint8_t, N> const& data, std::size_t const length) noexcept
-    {
-        static_assert(N <= kMaxFrameSize, "HAL_UART_Transmit takes at most 65535 bytes");
-        bool sent{false};
-
-        if (length <= N) {
-        	HAL_StatusTypeDef const status{HAL_UART_Transmit(
-        			&handle_, data.data(), static_cast<std::uint16_t>(length), kTimeoutMs)};
-        	sent = (status == HAL_OK);
-        }
-
-        return sent;
-    }
-    // Sends the whole array
-    template <std::size_t N>
-    bool write(std::array<std::uint8_t, N> const& data) noexcept
-    {
-    	return write(data, N);
-    }
-
-private:
-    static constexpr std::size_t kMaxFrameSize{65535U};
-    static constexpr std::uint32_t kTimeoutMs{100U};
-    UART_HandleTypeDef& handle_;
-};
 
 std::uint32_t next_count(std::uint32_t const count) noexcept
 {
@@ -64,7 +33,7 @@ extern "C" void app_main() noexcept
     constexpr auto kLineEnd{airsonar::lib::to_bytes("\r\n")};
 
     airsonar::drivers::Led led{LD2_GPIO_Port, LD2_Pin};
-    Uart uart{huart2};
+    airsonar::drivers::Uart uart{huart2};
     std::uint32_t tick_count{0U};
     std::array<std::uint8_t, airsonar::lib::kMaxDecimalDigits> digits{};
 
